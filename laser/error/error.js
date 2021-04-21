@@ -5,9 +5,6 @@ document.getElementById("loader-btn").addEventListener("click",function(){
     location.reload();
 });
 	          	
-
-
-
 let time = 1000// 1 sec
 let mydate = new Date();
 let checkpoint = mydate.getMinutes() ;
@@ -21,7 +18,8 @@ function checkTime(){
     //console.log("test123",currentTime);
     //please improve this checking part-------------------
     //check the backward adjustment (minutes,hours,days)
-    if ( (checkpoint) > (currentTime) && (checkpoint != 0)){
+    alert('ss')
+    if ( (checkpoint) > (currentTime) ){
         clearInterval(refreshIntervalId);
         alert('error');
         this.showError();

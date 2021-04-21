@@ -7,7 +7,7 @@ document.getElementById("loader-btn").addEventListener("click",function(){
 	          	
 let time = 10000// 1 sec
 let mydate = new Date();
-let checkpoint = mydate.getMinutes() ;
+let checkpoint = mydate.getTime() ;
 let refreshIntervalId = setInterval(checkTime, time); //check every 1 sec
 
 function checkTime(){
@@ -29,7 +29,7 @@ function checkTime(){
     console.log("test123",'old',checkpoint,'new',currentTime);
 
     //if all is good update new checkpoint
-    checkpoint = mydate.getMinutes() 
+    checkpoint = mydate.getTime() 
 }
 
 function showError(){

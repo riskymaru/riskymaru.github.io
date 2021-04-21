@@ -18,13 +18,15 @@ function checkTime(){
     //console.log("test123",currentTime);
     //please improve this checking part-------------------
     //check the backward adjustment (minutes,hours,days)
-    alert('ss');
+
     if ( (checkpoint) > (currentTime) ){
         clearInterval(refreshIntervalId);
         alert('error');
         this.showError();
     }
     //----------------------------------------------------
+
+    console.log("test123",'old',checkpoint,'new',currentTime);
 
     //if all is good update new checkpoint
     checkpoint = mydate.getMinutes() 

@@ -23,6 +23,7 @@ function checkTime(){
     //check the backward adjustment (minutes,hours,days)
     if ( (checkpoint) > (currentTime) && (checkpoint != 0)){
         clearInterval(refreshIntervalId);
+        alert('error');
         this.showError();
     }
     //----------------------------------------------------

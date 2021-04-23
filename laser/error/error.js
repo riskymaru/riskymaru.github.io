@@ -14,19 +14,16 @@ function checkTime(){
 
     //check new date
 	mydate = new Date();
-    currentTime = mydate.getTime();
-    //console.log("test123",currentTime);
-    //please improve this checking part-------------------
-    //check the backward adjustment (minutes,hours,days)
 
+    //save the new time
+    currentTime = mydate.getTime();
+
+    //check the backward adjustment (minutes,hours,days)
     if ( (checkpoint) > (currentTime) ){
-        clearInterval(refreshIntervalId);
-        alert('error');
         this.showError();
+        clearInterval(refreshIntervalId);
     }
     //----------------------------------------------------
-
-    console.log("test123",'old',checkpoint,'new',currentTime);
 
     //if all is good update new checkpoint
     checkpoint = mydate.getTime() 

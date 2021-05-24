@@ -62,8 +62,9 @@ and (max-device-width : 1024px)
 and (orientation : landscape) { /* STYLES GO HERE */
 	canvas{
 		margin: auto;
+		margin-top: 0px;
 		width: auto;
-		height: 100%;
+		height: 92%;
 	}
 }
 
@@ -98,8 +99,9 @@ and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 1)  { /* STYLES GO HERE */
 	canvas{
 		margin: auto;
+		margin-top: 0px;
 		width: auto;
-		height: 100%;
+		height: 92%;
 	}
 }
 
@@ -128,7 +130,8 @@ and (-webkit-min-device-pixel-ratio: 1) { /* STYLES GO HERE */
 @media screen and (orientation:landscape) { 
 	canvas{
 		margin: auto;
+		margin-top: 0px;
 		width: auto;
-		height: 100%;
+		height: 92%;
 	}
  }

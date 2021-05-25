@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:1a88e32d6f4a579e8b1b767d44072c5b:420f655a58cface8e5a748070f7790bb:ba1201ad2da1ebf2763dd815923bcb50$ -->
+<TextureAtlas imagePath="Atlas0.png">
+    <SubTexture name="0b" x="414" y="756" width="44" height="55"/>
+    <SubTexture name="1b" x="34" y="852" width="31" height="54"/>
+    <SubTexture name="2b" x="1" y="926" width="44" height="54"/>
+    <SubTexture name="3b" x="172" y="686" width="45" height="55"/>
+    <SubTexture name="4b" x="172" y="631" width="47" height="54"/>
+    <SubTexture name="5b" x="414" y="701" width="45" height="54"/>
+    <SubTexture name="6b" x="92" y="712" width="44" height="55"/>
+    <SubTexture name="7b" x="46" y="907" width="44" height="53"/>
+    <SubTexture name="8b" x="171" y="742" width="44" height="55"/>
+    <SubTexture name="9b" x="92" y="768" width="44" height="55"/>
+    <SubTexture name="ChangeOvl-1" x="465" y="179" width="241" height="241" frameX="-5" frameY="-4" frameWidth="250" frameHeight="250"/>
+    <SubTexture name="FillUnder" x="99" y="869" width="28" height="28"/>
+    <SubTexture name="GameLogo-1-1" x="1" y="1" width="463" height="388"/>
+    <SubTexture name="PauseUnder" x="465" y="1" width="327" height="177"/>
+    <SubTexture name="RasteredBM17" x="793" y="1" width="222" height="95" frameX="-29" frameY="-11" frameWidth="283" frameHeight="118"/>
+    <SubTexture name="RasteredBM18" x="968" y="539" width="49" height="73" frameX="-9" frameY="-21" frameWidth="70" frameHeight="116"/>
+    <SubTexture name="RasteredBM19" x="1" y="852" width="32" height="73" frameX="-15" frameY="-21" frameWidth="70" frameHeight="116"/>
+    <SubTexture name="RasteredBM20" x="220" y="659" width="159" height="105" frameX="-62" frameY="-11" frameWidth="283" frameHeight="118"/>
+    <SubTexture name="RasteredBM21" x="242" y="611" width="177" height="47" frameX="-53" frameY="-11" frameWidth="283" frameHeight="60"/>
+    <SubTexture name="RasteredBM22" x="644" y="552" width="129" height="70" frameX="-12" frameY="-25" frameWidth="150" frameHeight="120"/>
+    <SubTexture name="RasteredBM23" x="1" y="712" width="90" height="69" frameX="-16" frameY="-26" frameWidth="120" frameHeight="120"/>
+    <SubTexture name="RasteredBM24" x="1" y="782" width="89" height="69" frameX="-16" frameY="-25" frameWidth="120" frameHeight="120"/>
+    <SubTexture name="RasteredBM8" x="968" y="670" width="49" height="49"/>
+    <SubTexture name="RastereddsdBM17" x="707" y="392" width="49" height="74" frameX="-10" frameY="-21" frameWidth="70" frameHeight="116"/>
+    <SubTexture name="Rounded Rectangle 2" x="1" y="631" width="170" height="80"/>
+    <SubTexture name="ScoreUnder" x="707" y="299" width="79" height="41"/>
+    <SubTexture name="TempBallIcon" x="420" y="611" width="42" height="42"/>
+    <SubTexture name="backBtn-1" x="793" y="97" width="220" height="220"/>
+    <SubTexture name="buttom score" x="644" y="468" width="142" height="83"/>
+    <SubTexture name="cup" x="463" y="602" width="178" height="226" frameX="-39" frameY="0" frameWidth="257" frameHeight="226"/>
+    <SubTexture name="cursor" x="968" y="613" width="49" height="56"/>
+    <SubTexture name="firework1" x="380" y="659" width="34" height="35" frameX="-1" frameY="-2" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="firework2" x="91" y="986" width="30" height="30" frameX="-2" frameY="-4" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="firework3" x="757" y="392" width="29" height="37" frameX="-3" frameY="-1" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="firework4" x="380" y="659" width="34" height="35" frameX="-1" frameY="-2" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="firework5" x="91" y="986" width="30" height="30" frameX="-2" frameY="-4" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="firework6" x="757" y="392" width="29" height="37" frameX="-3" frameY="-1" frameWidth="36" frameHeight="38"/>
+    <SubTexture name="home-1" x="787" y="318" width="220" height="220"/>
+    <SubTexture name="inv" x="1016" y="1" width="1" height="1" frameX="0" frameY="0" frameWidth="153" frameHeight="91"/>
+    <SubTexture name="kubok_sm" x="757" y="430" width="29" height="37"/>
+    <SubTexture name="pause" x="642" y="623" width="120" height="120"/>
+    <SubTexture name="playBtnBasket" x="1" y="390" width="240" height="240"/>
+    <SubTexture name="procent_big" x="707" y="341" width="61" height="50" frameX="-1" frameY="-1" frameWidth="63" frameHeight="52"/>
+    <SubTexture name="restart" x="242" y="390" width="220" height="220"/>
+    <SubTexture name="soundOffBtn-1" x="463" y="421" width="180" height="180"/>
+    <SubTexture name="soundOnBtn-1" x="787" y="539" width="180" height="180"/>
+    <SubTexture name="t0" x="1" y="981" width="28" height="39"/>
+    <SubTexture name="t0_b" x="644" y="421" width="34" height="46"/>
+    <SubTexture name="t1" x="763" y="623" width="19" height="39"/>
+    <SubTexture name="t1_b" x="679" y="421" width="23" height="46"/>
+    <SubTexture name="t2" x="30" y="981" width="28" height="39"/>
+    <SubTexture name="t2_b" x="380" y="695" width="33" height="46"/>
+    <SubTexture name="t3" x="149" y="938" width="27" height="39"/>
+    <SubTexture name="t3_b" x="380" y="742" width="33" height="46"/>
+    <SubTexture name="t4" x="99" y="829" width="28" height="39"/>
+    <SubTexture name="t4_b" x="59" y="961" width="31" height="46"/>
+    <SubTexture name="t5" x="149" y="978" width="27" height="39"/>
+    <SubTexture name="t5_b" x="91" y="899" width="31" height="46"/>
+    <SubTexture name="t6" x="91" y="946" width="28" height="39"/>
+    <SubTexture name="t6_b" x="137" y="712" width="33" height="46"/>
+    <SubTexture name="t7" x="120" y="946" width="28" height="39"/>
+    <SubTexture name="t7_b" x="66" y="852" width="32" height="46"/>
+    <SubTexture name="t8" x="123" y="898" width="28" height="39"/>
+    <SubTexture name="t8_b" x="137" y="759" width="33" height="46"/>
+    <SubTexture name="t9" x="128" y="829" width="28" height="39"/>
+    <SubTexture name="t9_b" x="420" y="654" width="34" height="46"/>
+    <SubTexture name="tdots" x="1008" y="352" width="10" height="28"/>
+    <SubTexture name="tdots_b" x="1008" y="318" width="13" height="33"/>
+    <SubTexture name="tutor_hand2" x="707" y="179" width="83" height="119"/>
+</TextureAtlas>

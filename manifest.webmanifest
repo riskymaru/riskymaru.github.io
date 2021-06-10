@@ -9,11 +9,7 @@
 		"src": "icon/logo-128.png",
 		"sizes": "128x128",
 		"type": "image/png"
-	}, {
-		"src": "icon/logo-256.png",
-		"sizes": "144x144",
-		"type": "image/png"
-	}, {
+	},{
 		"src": "icon/logo-256.png",
 		"sizes": "256x256",
 		"type": "image/png"
@@ -21,12 +17,10 @@
 		"src": "icon/logo-512.png",
 		"sizes": "512x512",
 		"type": "image/png"
-	},{
+	}],
+	"audio":[{
 		"src": "assets/sndm4a/bgm1.m4a",
 		"type": "audio/mp4a"
-	}
+	}]
 
-
-
-]
 }

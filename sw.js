@@ -3,6 +3,7 @@ self.addEventListener('install', (e) => {
 	  caches.open('fox-store').then((cache) => cache.addAll([
 		'index.html',
 		'assets/css/main.css',
+		'assets/proj/sfx.js',
 	  ])),
 	);
 	console.log("reg")
@@ -15,3 +16,5 @@ self.addEventListener('install', (e) => {
 	);
   });
   
+
+  console.log("REG v0.1")

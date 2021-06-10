@@ -21,5 +21,12 @@
 		"src": "icon/logo-512.png",
 		"sizes": "512x512",
 		"type": "image/png"
-	}]
+	},{
+		"src": "assets/sndm4a/bgm1.m4a",
+		"type": "audio/mp4a"
+	}
+
+
+
+]
 }

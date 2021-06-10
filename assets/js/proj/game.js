@@ -35,7 +35,7 @@ class PixiGame{
 			 * @description
 			 * it holds the whole game display
 			 */
-
+			 this.delayedC = {a:0};
 			 this.currentQuestionID = 0;
 			 this.level = 0;
 			 this.score = 0;
@@ -353,15 +353,15 @@ class PixiGame{
 				
 			}});
 
-			TweenMax.delayedCall(5,()=>{
+			TweenMax.to(this.delayedC,5,{a:1,onComplete:()=>{
 				this.answer.interactive = true;
 				this.animateQuizStart();
-			});
+			}});
 		}else
 		if(currentAnswer == 1){
-			TweenMax.delayedCall(2,()=>{
+			TweenMax.to(this.delayedC,5,{a:1,onComplete:()=>{
 				this.animateQuizStart();
-			});
+			}});
 		}
 
 		
@@ -532,6 +532,8 @@ class PixiGame{
 	}
 
 	clickHome(){
+		TweenMax.killTweensOf(this.delayedC);
+		TweenMax.killAll(false, true, true);
 		SFX["sfx-btn1"].play();
 		this.resetTimer();
 		this.infoContainer.visible = false

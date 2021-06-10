@@ -25,7 +25,9 @@ class SoundFX {
 	initSounds(){
 		
 
-		let dir = "assets/snd/";
+		let dir = "assets/sndm4a/";
+
+		let ext = ".m4a"
 
 		let sound_list = [
 				//title / loop
@@ -40,31 +42,7 @@ class SoundFX {
                 ["sfx-tick",false,this.SFX_VOLUME],
 
                 ["sfx-beep",false,this.SFX_VOLUME],
-                ["sfx-reveal-score",false,this.SFX_VOLUME],
-				/*["explosion_1",false,this.SFX_VOLUME],
-
-				["shoot_1",false,this.SFX_VOLUME],
-				["shoot_2",false,this.SFX_VOLUME],
-				["shoot_3",false,this.SFX_VOLUME],
-
-				["hit_1",false,this.SFX_VOLUME],
-				["shield",true,this.SFX_VOLUME],
-				["chicken",false,this.SFX_VOLUME*0.25],
-				["chicken_shout",false,this.SFX_VOLUME*0.4],
-				["score_up",false,this.SFX_VOLUME*0.4],
-
-
-				["chicken_shoot",false,this.SFX_VOLUME*0.4],
-				["bullet_deflect",false,this.SFX_VOLUME*0.4],
-
-				["button_1",false,this.SFX_VOLUME],
-				["button_2",false,this.SFX_VOLUME],
-				["button_3",false,this.SFX_VOLUME],
-
-				["get_power_up",false,this.SFX_VOLUME],*/
-
-
-				/*["button_click",false,1],*/
+                ["sfx-reveal-score",false,this.SFX_VOLUME]
 		];
 
 		let i = 0;
@@ -72,7 +50,7 @@ class SoundFX {
 
 		for(i=0; i<len; i++){
 			this[ sound_list[i][0] ] = new Howl({
-												src:[dir + sound_list[i][0] +".mp3"],
+												src:[dir + sound_list[i][0] + ext],
 												loop:sound_list[i][1],
 												volume: sound_list[i][2]
 											} );

@@ -3,7 +3,7 @@
 	"short_name": "Hypo or Typo",
 	"start_url": "index.html",
 	"display": "fullscreen",
-	"orientation": "any",
+	"orientation": "landscape",
 	"scope": "/",
 	"icons": [{
 		"src": "icon/logo-128.png",
@@ -17,10 +17,6 @@
 		"src": "icon/logo-512.png",
 		"sizes": "512x512",
 		"type": "image/png"
-	}],
-	"audio":[{
-		"src": "assets/sndm4a/bgm1.m4a",
-		"type": "audio/mp4a"
 	}]
 
 }

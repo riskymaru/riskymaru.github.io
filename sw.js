@@ -17,4 +17,4 @@ self.addEventListener('install', (e) => {
   });
   
 
-  console.log("REG v0.1")
+  console.log("REG v0.2")

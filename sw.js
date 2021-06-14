@@ -3,17 +3,17 @@ self.addEventListener('install', (e) => {
 	  caches.open('fox-store').then((cache) => cache.addAll([
 		'index.html',
 		'assets/css/main.css',
-		'assets/proj/sfx.js',
-		'assets/sndm4a.bgm1.m4a',
+		'assets/js/proj/sfx.js',
+		'assets/sndm4a/bgm1.m4a',
 		'assets/sndm4a/sfx-btn2.m4a',
 		'assets/sndm4a/sfx-btn1.m4a',
 		'assets/sndm4a/sfx-win.m4a',
 		'assets/sndm4a/sfx-wrong.m4a',
-		'assets/sndm4a/play-score.m4a',
-		'assets/sndm4a/ton-click.m4a',
-		'assets/sndm4a/"sfx-tick.m4a',
-		'assets/sndm4a/"sfx-beep.m4a'
-		["sfx-reveal-score",false,this.SFX_VOLUME]
+		'assets/sndm4a/sfx-display-score.m4a',
+		'assets/sndm4a/sfx-button-click.m4a',
+		'assets/sndm4a/sfx-tick.m4a',
+		'assets/sndm4a/sfx-beep.m4a',
+		'assets/sndm4a/sfx-reveal-score.m4a'
 	  ])),
 	);
 	console.log("reg")

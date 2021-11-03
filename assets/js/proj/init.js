@@ -4,7 +4,6 @@
 ///PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 
 
-
 const config = new Config();
 
 const SFX = new SoundFX();
@@ -16,9 +15,11 @@ const gamecanvas = document.getElementById('canvas-app');
 const pixiapp = new PIXI.Application(config.pixiSettings);
 	  gamecanvas.appendChild(pixiapp.view);
 
-const preloader = new PixiPreload(pixiapp,config);
+const assets = new PixiPreload(pixiapp,config);
 
-const game = new PixiGame(pixiapp,preloader);
+
+
+const game = new PixiGame(pixiapp,assets);
 //add pixi to DOM
 
 /*
@@ -29,7 +30,7 @@ initialize other js below this line
 //RyxPixiResize(pixiapp,config);
 
 //ready preloader
-preloader.loader.on('loadComplete',function(){
+assets.loader.on('loadComplete',function(){
     game.onCompletePreload();
     //console.log("loading complete");
 })

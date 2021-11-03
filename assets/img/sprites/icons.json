@@ -1,0 +1,38 @@
+﻿{"frames": {
+
+"icon_happy0000":
+{
+	"frame": {"x":10,"y":160,"w":65,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":65},
+	"sourceSize": {"w":65,"h":65}
+},
+"icon_heart0000":
+{
+	"frame": {"x":10,"y":85,"w":65,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":65},
+	"sourceSize": {"w":65,"h":65}
+},
+"icon_sad0000":
+{
+	"frame": {"x":10,"y":10,"w":65,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":65},
+	"sourceSize": {"w":65,"h":65}
+}},
+"animations": {
+	"img": ["icon_happy0000","icon_heart0000","icon_sad0000"]
+},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "icons.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":256},
+	"scale": "1"
+}
+}

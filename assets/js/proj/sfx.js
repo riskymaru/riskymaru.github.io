@@ -35,14 +35,14 @@ class SoundFX {
 				["bgm1",true,this.BGM_VOLUME],
                 ["sfx-btn2",false,this.SFX_VOLUME],
                 ["sfx-btn1",false,this.SFX_VOLUME],
-                ["sfx-win",false,this.SFX_VOLUME],
-                ["sfx-wrong",false,this.SFX_VOLUME],
-                ["sfx-display-score",false,this.SFX_VOLUME],
+                //["sfx-win",false,this.SFX_VOLUME],
+                //["sfx-wrong",false,this.SFX_VOLUME],
+                //["sfx-display-score",false,this.SFX_VOLUME],
                 ["sfx-button-click",false,this.SFX_VOLUME],
-                ["sfx-tick",false,this.SFX_VOLUME],
+                //["sfx-tick",false,this.SFX_VOLUME],
 
-                ["sfx-beep",false,this.SFX_VOLUME],
-                ["sfx-reveal-score",false,this.SFX_VOLUME]
+                //["sfx-beep",false,this.SFX_VOLUME],
+                //["sfx-reveal-score",false,this.SFX_VOLUME]
 		];
 
 		let i = 0;

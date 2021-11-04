@@ -100,6 +100,10 @@ function convert(arr,type){
 }
 
 
+function NumberComma(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 function preventDefault(e) {
   e.preventDefault();

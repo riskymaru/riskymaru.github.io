@@ -26,7 +26,25 @@ class PixiGame{
 			//create
 			this.create();
 		}
-		
+
+		resetData(){
+			this._POINTS = 0;
+			this._DEDUCTION = 10;
+			this._MAX_TIME = 180;
+			this._CURR_TIME = 0;
+			this._TILE_COMPLETED = 0;
+			this._TOTAL_TILES = 24;
+			this._CURRENT_SELECTED = null;
+			this._PREV_SELECTED = null;
+			this._MAX_TILES = 104;
+			this._GAME_OVER = false;
+			this._LVL = 0;
+			this._COMBO = 0;
+			this._LAST_COLOR_ID = 0;
+			this._STATUS = "intro";
+			
+	}
+	
 		create(){
 			/**
 			 * @type {Container}
@@ -34,17 +52,7 @@ class PixiGame{
 			 * it holds the whole game display
 			 */
 
-			this._POINTS = 0;
-			this._DEDUCTION = 10;
-			this._MAX_TIME = 300;
-			this._CURR_TIME = 0;
-			this._TILE_COMPLETED = 0;
-			this._TOTAL_TILES = 8;
-			this._CURRENT_SELECTED = null;
-			this._PREV_SELECTED = null;
-			this._MAX_TILES = 104;
-			this._GAME_OVER = false;
-			this._LVL = 0;
+			this.resetData();
 
 			this.gamecontainer = this.pixi.stage.addChild( new PIXI.Container() );
 			//-----------------------------------------------------------
@@ -55,14 +63,13 @@ class PixiGame{
 
 			this.tileContainer = this.background.addChild(new PIXI.Container() );
 			this.tileContainer.position.set(0,0);
+			this.tileContainer.scale.set(1.1)
 			
-
 			/*Tap(this,this.background,{onUp:()=>{
 				this.background.tint = random_hex_color_code();
 				console.log("123",this.background.tint);
 			}})*/
-	
-			//SFX["bgm1"].play();
+
 
 			this.addHud();
 			this.createTiles();
@@ -72,28 +79,19 @@ class PixiGame{
 			this.startTime();
 	}
 
-	drawGameOver(){
-			this.gameOver = this.gamecontainer.addChild(new PIXI.Sprite(this.assets.loadImg('game-over.png')) );
-			this.gameOver.position.set(config.pixiSettings.width*0.5,config.pixiSettings.height*0.5);	
-			this.gameOver.anchor.set(0.5);
-
-			this.gameOver.visible = false;
-
-			const last_score = new PIXI.Text('1,000');
-			last_score.position.set(0,0);
-			last_score.anchor.set(0.5);
-			last_score.style._fontFamily = "Roboto",
-			last_score.style._fill = "#cccccc";
-			last_score.style._fontSize = 30;
-			last_score.style._align = "right";
-			this.gameOver.addChild(last_score);
-        	this.last_score = last_score;
-	}
-
 	addHud(){
 		let score_bg = this.gamecontainer.addChild(new PIXI.Sprite(this.assets.loadImg('score-bg.png')) );
-		score_bg.position.set(420,35);	
+		score_bg.position.set(280,35);	
 		score_bg.anchor.set(0.5);
+
+		let music_btn = this.gamecontainer.addChild(new PIXI.Sprite(this.assets.loadImg('music_btn.png')) );
+		music_btn.position.set(480,35);	
+		music_btn.anchor.set(0.5);
+		this.music_btn = music_btn;
+
+		Tap(this,music_btn,{onUp:()=>{
+			this.toggleMusic();
+		}});
 
 		const score_board_text = new PIXI.Text('0');
         score_board_text.position.set(-75,10);
@@ -115,7 +113,6 @@ class PixiGame{
         score_bg.addChild(level_txt);
         this.level_txt = level_txt;
 
-
 		let minilogo = this.gamecontainer.addChild(new PIXI.Sprite(this.assets.loadImg('mini-logo.png')) );
 		minilogo.position.set(70,35);	
 		minilogo.anchor.set(0.5);
@@ -132,6 +129,117 @@ class PixiGame{
 		this.timer_bar = timer_bar;
 	}
 
+	drawGameOver(){
+		this.gameOver = this.gamecontainer.addChild(new PIXI.Sprite(this.assets.loadImg('game-over.png')) );
+		this.gameOver.position.set(config.pixiSettings.width*0.5,config.pixiSettings.height*0.5);	
+		this.gameOver.anchor.set(0.5);
+		this.gameOver.visible = false;
+
+		const last_score = new PIXI.Text('0');
+		last_score.position.set(0,0);
+		last_score.anchor.set(0.5);
+		last_score.style._fontFamily = "Roboto",
+		last_score.style._fill = "#cccccc";
+		last_score.style._fontSize = 30;
+		last_score.style._align = "right";
+		this.gameOver.addChild(last_score);
+		this.last_score = last_score;
+
+
+		this.home_btn = this.gameOver.addChild(new PIXI.Sprite(this.assets.loadImg('home_btn.png')) );
+		this.home_btn.position.set(-97,85);	
+		this.home_btn.anchor.set(0.5);
+
+		this.retry_btn = this.gameOver.addChild(new PIXI.Sprite(this.assets.loadImg('retry_btn.png')) );
+		this.retry_btn.position.set(97,85);	
+		this.retry_btn.anchor.set(0.5);
+
+		Tap(this,this.home_btn,{onUp:()=>{
+			this.goToHome();
+		}})
+
+
+		Tap(this,this.retry_btn,{onUp:()=>{
+			this.goRetry();
+		}})
+	
+}
+
+goToHome(){
+
+}
+
+goRetry(){
+	this.resetData();
+	this.gameOver.visible = false;
+	this.last_score.text = "0";
+	this.score_board_text.text = "0";
+	this.level_txt.text = "0";
+	TweenMax.killTweensOf(this.tileContainer);
+
+	let i=0,j=0,k=0;
+	for(i=0; i<this._MAX_TILES; i++ ){
+		this.tiles[j][k].visible = false;
+		this.tiles[j][k].interactive = true;
+		k+=1;
+		if(k>7){
+			k=0;
+			j+=1;
+		}
+	}
+
+	this.levelUp();
+	this.startTime();
+}
+
+
+createTiles(){
+		
+	this.tiles = [[]];
+	let _left = 210;
+	let _top = 330;
+	let i=0;
+	let tempX =0;
+	let tempY=0;
+	let j=0,k=0;
+	let gap = 61;
+	let obj = {
+		"container":this.tileContainer,
+		"assets":this.assets
+	}
+
+	let txtr = this.generateTileTextures();
+	txtr = ARRshuffle(txtr);
+
+	for(i=0; i<this._MAX_TILES; i++ ){
+		this.tiles[j][k] = new PixiAtlas("onetframe",obj,"onetframe_" + txtr[i]);//this.background.addChild(new PIXI.Sprite(this.assets.loadImg('g1.png')) );
+		this.tiles[j][k].anchor.set(0.5);
+		this.tiles[j][k]._id = txtr[i];
+		this.tiles[j][k].interactive = true;
+		this.tiles[j][k].position.set( (tempX*gap)-_left-2, tempY*gap-_top );
+		this.tiles[j][k].visible = false;
+		Tap(this,this.tiles[j][k],{onDown:(e)=>{this.tapTile(e)}});
+		
+		tempX+=1;
+		k+=1;
+
+		if(tempX>7){
+			tempX = 0;
+			tempY+=1;
+			k=0;
+			j+=1;
+			this.tiles[j]=[];
+		}
+	}
+
+	//cursor
+	this.cursor = this.tileContainer.addChild(new PIXI.Sprite(this.assets.loadImg('highlight.png')) );
+	this.cursor.position.set(0,0);	
+	this.cursor.anchor.set(0.5);
+	this.cursor.tint = 0xff0000;
+	this.cursor.alpha = 0;
+}
+
 
 	startTime(){
 		let tw = {x:0};
@@ -144,28 +252,39 @@ class PixiGame{
 
 		TweenMax.to(tw,1,{
 			x:0,
+			delay:2,
 			repeat:-1,
-			onComplete:()=>{
-				console.log("END")
-			},
 			onRepeat:()=>{
 				this.deductTime(1);
 				if(this._CURR_TIME<=0){
+					//GAME OVER
 					TweenMax.killTweensOf(tw);
-					console.log("GAME OVER");
 					this._GAME_OVER = true;
 					this.showGameOver(this._POINTS);
+				}
+
+				if(this._CURR_TIME < 20){
+					this.rushTime();
 				}
 			}
 		});
 	}
 
+	rushTime(){
+		this.shake();
+		SFX["bgm-color"].rate(1.2);
+	}
+
 
 	showGameOver(num){
+		TweenMax.killTweensOf(this.tileContainer);
+		this.tileContainer.x = 0;
+		SFX.play("sfx-win");
+		SFX.stop("bgm-color");
 		console.log("vis",this,this.gameOver)
 		this.gameOver.visible = true;
-		this.last_score.text = num;
-		TweenMax.to(this.gameOver.scale,1,{y:1,x:1,startAt:{y:2,x:2},ease:Back.easeOut});
+		this.last_score.text = NumberComma(num);
+		TweenMax.to(this.gameOver.scale,1,{y:1,x:1,startAt:{y:1.5,x:1.5},ease:Back.easeIn});
 	}
 
 	deductTime(num,fx){
@@ -180,70 +299,23 @@ class PixiGame{
 		}
 	}
 
-	createTiles(){
-		
-		this.tiles = [[]];
-
-		let _left = 210;
-		let _top = 330;
-		let i=0;
-		let tempX =0;
-		let tempY=0;
-		let j=0,k=0;
-		let gap = 61;
-		let obj = {
-			"container":this.tileContainer,
-			"assets":this.assets
-		}
-
-		let txtr = this.generateTileTextures();
-		txtr = ARRshuffle(txtr);
-
-		for(i=0; i<this._MAX_TILES; i++ ){
-			this.tiles[j][k] = new PixiAtlas("onetframe",obj,"onetframe_" + txtr[i]);//this.background.addChild(new PIXI.Sprite(this.assets.loadImg('g1.png')) );
-			this.tiles[j][k].anchor.set(0.5);
-			this.tiles[j][k]._id = txtr[i];
-			this.tiles[j][k].interactive = true;
-			this.tiles[j][k].position.set( (tempX*gap)-_left-2, tempY*gap-_top );
-			this.tiles[j][k].visible = false;
-			Tap(this,this.tiles[j][k],{onDown:(e)=>{this.tapTile(e)}});
-			
-			tempX+=1;
-			k+=1;
-
-			if(tempX>7){
-				tempX = 0;
-				tempY+=1;
-				k=0;
-				j+=1;
-				this.tiles[j]=[];
-			}
-		}
-
-		//cursor
-		this.cursor = this.tileContainer.addChild(new PIXI.Sprite(this.assets.loadImg('highlight.png')) );
-		this.cursor.position.set(0,0);	
-		this.cursor.anchor.set(0.5);
-		this.cursor.tint = 0xff0000;
-		this.cursor.alpha = 0;
-	}
 
 	moveCursor(e){
 		this.cursor.alpha = 1;
 		this.cursor.x = e.x;
 		this.cursor.y = e.y;
 	}
-	
 
 	tapTile(e){
-
-		if(this._GAME_OVER == true){
+		console.log("stat",this._STATUS)
+		if(this._GAME_OVER == true || this._STATUS == "intro"){
 			return;
 		}
 
 		this.moveCursor(e);
 
 		if(this._CURRENT_SELECTED == null && this._PREV_SELECTED == null){
+			SFX["sfx-tick"].play();
 			this._CURRENT_SELECTED = e;
 			e.interactive = false;
 		}else
@@ -258,15 +330,28 @@ class PixiGame{
 
 			//match
 			if(this._CURRENT_SELECTED._id == this._PREV_SELECTED._id ){
+
 				this._PREV_SELECTED.visible = false;
 				this._CURRENT_SELECTED.visible = false;
 				this._TILE_COMPLETED += 2;
-				this.addPoints(1);
+			
+				if(this._LAST_COLOR_ID == this._CURRENT_SELECTED._id){
+					this._COMBO+=1;
+					SFX.play("sfx-pair", 1 + (this._COMBO *0.05));
+					this.addPoints(this._LVL*2);
+				}else{
+					this._COMBO = 0;
+					SFX.play("sfx-pair");
+					this.addPoints(this._LVL);
+				}
+				
+				this._LAST_COLOR_ID = this._CURRENT_SELECTED._id 
 
 				if(this._TILE_COMPLETED == this._TOTAL_TILES){
 					this.levelUp();
 				}
 			}else{
+				SFX.play("sfx-wrong");
 				this.deductTime(this._DEDUCTION,true);
 			}
 
@@ -277,20 +362,20 @@ class PixiGame{
 	}
 
 	addPoints(num){
-		this._POINTS += num;
-		this.score_board_text.text = this._POINTS;
+		this._POINTS += (num);
+		this.score_board_text.text = NumberComma(this._POINTS);
 	}
 
 	levelUp(){
 		let i=0,j=0,k=0;
 		let tempX=0,tempY=0;
 	
-
 		this._LVL += 1;
 		this.level_txt.text = this._LVL;
 
-		if(this._LVL!=0){
-			this.addPoints(10);
+		if(this._LVL>1){
+			SFX.play("sfx-unlock");
+			this.addPoints(this._LVL*10);
 		}
 
 		this._TILE_COMPLETED = 0;
@@ -306,6 +391,8 @@ class PixiGame{
 
 		let txtr = this.generateTileTextures();
 		txtr = ARRshuffle(txtr);
+		
+		let animArr = [];
 
 		for(i=0; i<this._TOTAL_TILES; i++ ){
 			this.tiles[j][k].visible = true;
@@ -319,8 +406,33 @@ class PixiGame{
 				k=0;
 				j+=1;
 			}
+			if(this._LVL == 1){
+				animArr.push(this.tiles[j][k]);
+			}
 		}
-		
+
+		if(this._LVL == 1){
+			this.background.tint = 0x3399cc;
+			this._STATUS = "intro";
+			TweenMax.delayedCall( 4, ()=>{this.intro()} );
+			TweenMax.allFrom(animArr,0.1,{y:-1000,ease:Sine.easeOut,
+				onStart:()=>{
+					SFX["sfx-beep"].volume(0.15);
+					SFX.play("sfx-beep",1);
+				},onCompleteAll:()=>{
+					
+				}
+			},0.1);
+		}
+	}
+
+	shake(){
+		TweenMax.to(this.tileContainer,0.25,{x:-1,startAt:{x:1},repeat:-1});
+	}
+
+	intro(){
+		this._STATUS = "start";
+		SFX.play("bgm-color",1);
 	}
 
 	generateTileTextures(){
@@ -336,6 +448,15 @@ class PixiGame{
 		return txtr_arr;
 	}
 
+	toggleMusic(){
+		if(this.music_btn.texture == this.assets.loadImg("music_btn.png")){
+			SFX.mute(true);
+			this.music_btn.texture = this.assets.loadImg("mute_btn.png");
+		}else{
+			SFX.mute(false);
+			this.music_btn.texture = this.assets.loadImg("music_btn.png");
+		}
+	}
 	
 }
 

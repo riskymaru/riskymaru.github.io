@@ -7,9 +7,9 @@ class SoundFX {
 
 	constructor(){
 
-		this.BGM_VOLUME = 0.75;
+		this.BGM_VOLUME = 0.05;
 
-		this.SFX_VOLUME =  1;
+		this.SFX_VOLUME =  0.5;
 
 		this.sounds_on = true;
 
@@ -25,23 +25,25 @@ class SoundFX {
 	initSounds(){
 		
 
-		let dir = "assets/sndm4a/";
+		let dir = "assets/sndogg/";
 
-		let ext = ".m4a"
+		let ext = ".ogg"
 
 		let sound_list = [
 				//title / loop
-
+				["bgm-color",true,this.BGM_VOLUME],
 				["bgm1",true,this.BGM_VOLUME],
-                ["sfx-btn2",false,this.SFX_VOLUME],
-                ["sfx-btn1",false,this.SFX_VOLUME],
-                //["sfx-win",false,this.SFX_VOLUME],
-                //["sfx-wrong",false,this.SFX_VOLUME],
+                ["sfx-pair",false,this.SFX_VOLUME],
+                ["sfx-win",false,this.SFX_VOLUME],
+                ["sfx-wrong",false,this.SFX_VOLUME],
+				["sfx-correct",false,this.SFX_VOLUME],
+				["sfx-touch",false,this.SFX_VOLUME],
+				["sfx-unlock",false,this.SFX_VOLUME],
                 //["sfx-display-score",false,this.SFX_VOLUME],
-                ["sfx-button-click",false,this.SFX_VOLUME],
-                //["sfx-tick",false,this.SFX_VOLUME],
+                ["sfx-click",false,this.SFX_VOLUME],
+                ["sfx-tick",false,this.SFX_VOLUME],
 
-                //["sfx-beep",false,this.SFX_VOLUME],
+                ["sfx-beep",false,this.SFX_VOLUME],
                 //["sfx-reveal-score",false,this.SFX_VOLUME]
 		];
 
@@ -58,7 +60,9 @@ class SoundFX {
 
 	}
 
-	play(snd){
+	play(snd,_rate){
+		_rate == undefined ? _rate = 1 : 0;
+		this[snd]._rate = _rate;
 		this[snd].play();
 	}
 
@@ -71,8 +75,12 @@ class SoundFX {
 		this[snd].stop();
 	}
 
-	mute(){
-		Howler.volume(0);
+	mute(id){
+		if(id){
+			Howler.volume(0);
+		}else{
+			Howler.volume(1);
+		}
 	}
 
 	toggleAudio(_id,_idle){
@@ -90,13 +98,11 @@ class SoundFX {
 		}
 	}
 
-
 	fadeOutPlay(_id,_delay,_duration){
 
 		let self = this;
 
 		this.play(_id);
-
 		this[_id].volume(1);
 
 		let obj = {volume:1};

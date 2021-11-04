@@ -25,11 +25,17 @@ class PixiPreload {
         this.pixi.loader
         .add('game-bg.png' ,     'bg/game-bg.png')
         .add('bg.png' ,     'bg/bg.png')
-        .add('highlight.png' ,     'btn/highlight.png')
+        
         .add('mini-logo.png' ,     'sprites/mini-logo.png')
         .add('score-bg.png' ,     'sprites/score-bg.png')
         .add('timer-bar.png' ,     'sprites/timer-bar.png')
         .add('game-over.png' ,     'bg/game-over.png')
+
+        .add('highlight.png' ,     'btn/highlight.png')
+        .add('music_btn.png' ,     'btn/music_btn.png')
+        .add('mute_btn.png' ,     'btn/mute_btn.png')
+        .add('home_btn.png' ,     'btn/home_btn.png')
+        .add('retry_btn.png' ,     'btn/retry_btn.png')
         //atlas
         .add('onetframe' ,    'sprites/onetframe.json')
         ;//end of preload
@@ -43,7 +49,7 @@ class PixiPreload {
     createPrelodScene(){
 
             let posX = 270//512;
-            let posY = 200
+            let posY = 0;
 
             const preloader_x = 120;
             const preloader_y = 700;
@@ -60,7 +66,7 @@ class PixiPreload {
             this.preloadScene.addChild(this.bg);
             
 
-            this.touchtext = this.preloadScene.addChild(new PIXI.Text('Touch the screen to continue',{fontFamily : 'Arial', 
+            this.touchtext = this.preloadScene.addChild(new PIXI.Text('Touch the screen to Play.',{fontFamily : 'Arial', 
 															 fontSize: 20, 
 															 fill : 0x999999, 
 															 fontWeight: 'bold',
@@ -78,7 +84,7 @@ class PixiPreload {
             this.preloadbarbg.position.set(preloader_x, preloader_y);
 
             this.preloadbar = new PIXI.Graphics();
-            this.preloadbar.beginFill(0xff00cc);
+            this.preloadbar.beginFill(0xffcc00);
             this.preloadbar.drawRect(0, 0, 300, 10);
             this.preloadbar.endFill();
             this.preloadbar.scale.set(0,0.5);

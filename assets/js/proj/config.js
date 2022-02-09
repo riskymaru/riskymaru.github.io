@@ -8,9 +8,9 @@ class Config{
 
         this.pixiSettings = {
         						legacy:'true',
-							    width: 540, 
-							    height: 960, 
-							    backgroundColor: 0xffcc00, 
+							    width: 1024, 
+							    height: 768, 
+							    backgroundColor: 0x0, 
 							    //resolution: 0.58
 							}
 
@@ -18,4 +18,3 @@ class Config{
 
     }
 }
-

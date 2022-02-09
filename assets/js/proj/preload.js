@@ -9,11 +9,6 @@ class PixiPreload {
         this.loadSuccess = this.loadComplete;
         this.loader = new PIXI.Container();
 
-        //internal function for loading atlas
-        this.loadSpritesheet = this.loadSpritesheet;
-
-        this.loadSound = this.loadSound;
-
         this.createPrelodScene();
         this.init();
     }
@@ -23,69 +18,103 @@ class PixiPreload {
         this.pixi.loader.baseUrl = 'assets/img';
 
         this.pixi.loader
-        .add('game-bg.png' ,     'bg/game-bg.png')
-        .add('bg.png' ,     'bg/bg.png')
-        
-        .add('mini-logo.png' ,     'sprites/mini-logo.png')
-        .add('score-bg.png' ,     'sprites/score-bg.png')
-        .add('timer-bar.png' ,     'sprites/timer-bar.png')
-        .add('game-over.png' ,     'bg/game-over.png')
+            .add('main-bg.png' ,     'bg/main-bg.png')
 
-        .add('highlight.png' ,     'btn/highlight.png')
-        .add('music_btn.png' ,     'btn/music_btn.png')
-        .add('mute_btn.png' ,     'btn/mute_btn.png')
-        .add('home_btn.png' ,     'btn/home_btn.png')
-        .add('retry_btn.png' ,     'btn/retry_btn.png')
-        //atlas
-        .add('onetframe' ,    'sprites/onetframe.json')
-        ;//end of preload
+            .add('home.png' ,     'others/home.png')
+            .add('info.png' ,     'others/info.png')
+            .add('selection.png', 'others/selection.png')
+            .add('lvl-1.png' ,    'others/lvl-1.png')
+            .add('lvl-2.png' ,    'others/lvl-2.png')
+            .add('lvl-3.png' ,    'others/lvl-3.png')
+            .add('effect.png' ,    'others/effect.png')
+            .add('congrats.png' ,    'others/congrats.png')
+            .add('questionmark.png' , 'others/questionmark.png')
+            .add('butterfly.png' , 'others/butterfly.png')
+            .add('effect-top.png' , 'others/effect-top.png')
 
-        this.pixi.loader.onProgress.add(this.showProgress,this);
-        this.pixi.loader.onComplete.add(this.loadComplete,this);
-        this.pixi.loader.onError.add(this.onError,this);
-        this.pixi.loader.load();
+            .add('result-level1.png' ,     'level-label/result-level1.png')
+            //.add('result-level2.png' ,     'level-label/result-level2.png')
+            //.add('result-level3.png' ,     'level-label/result-level3.png')
+
+            .add('lvl-text-1.png' ,     'level-label/lvl-text-1.png')
+            .add('lvl-text-2.png' ,     'level-label/lvl-text-2.png')
+            .add('lvl-text-3.png' ,     'level-label/lvl-text-3.png')
+
+            .add('logo2.png' ,     'logo/logo2.png')
+            .add('logo1.png' ,     'logo/logo1.png')
+
+
+            .add('info-lvl-1.png' ,    'questions/info-lvl-1.png')
+            .add('info-lvl-2.png' ,    'questions/info-lvl-2.png')
+            .add('q1.png' ,    'questions/q1.png')
+            .add('q2.png' ,    'questions/q2.png')
+            .add('q3.png' ,    'questions/q3.png')
+            .add('q4.png' ,    'questions/q4.png')
+            .add('q5.png' ,    'questions/q5.png')
+
+            .add('qq1.png' ,    'questions/qq1.png')
+            .add('qq2.png' ,    'questions/qq2.png')
+            .add('qq3.png' ,    'questions/qq3.png')
+            .add('qq4.png' ,    'questions/qq4.png')
+            .add('qq5.png' ,    'questions/qq5.png')
+
+            .add('qqq1.png' ,    'questions/qqq1.png')
+            .add('qqq2.png' ,    'questions/qqq2.png')
+            .add('qqq3.png' ,    'questions/qqq3.png')
+            .add('qqq4.png' ,    'questions/qqq4.png')
+            .add('qqq5.png' ,    'questions/qqq5.png')
+
+            .add('q2a.png' ,    'questions/q2a.png')
+            .add('qq1a.png' ,    'questions/qq1a.png')
+            .add('qq5a.png' ,    'questions/qq5a.png')
+            .add('qqq3a.png' ,    'questions/qqq3a.png')
+            .add('qqq4a.png' ,    'questions/qqq4a.png')
+
+            //.add('q4.png' ,    'questions/q4.png')
+            ;//end of preload
+
+            this.pixi.loader.onProgress.add(this.showProgress,this);
+            this.pixi.loader.onComplete.add(this.loadComplete,this);
+            this.pixi.loader.onError.add(this.onError,this);
+            this.pixi.loader.load();
     }
 
     createPrelodScene(){
 
-            let posX = 270//512;
-            let posY = 0;
-
-            const preloader_x = 120;
-            const preloader_y = 700;
+            const preloader_x = 360;
+            const preloader_y = 650;
 
             this.preloadScene = new PIXI.Container();
             this.pixi.stage.addChild(this.preloadScene);
            
 
             this.bg = new PIXI.Graphics();
-            this.bg.beginFill(0xffffff);
-            //this.bg.lineStyle(4, 0x050505, 1);
+            this.bg.beginFill(0x0);
+            this.bg.lineStyle(4, 0x050505, 1);
             this.bg.drawRect(0,0,config.pixiSettings.width,config.pixiSettings.height);
             this.bg.endFill();
             this.preloadScene.addChild(this.bg);
-            
 
-            this.touchtext = this.preloadScene.addChild(new PIXI.Text('Touch the screen to Play.',{fontFamily : 'Arial', 
+            this.touchtext = this.preloadScene.addChild(new PIXI.Text('Touch the screen to continue',{fontFamily : 'Arial', 
 															 fontSize: 20, 
 															 fill : 0x999999, 
 															 fontWeight: 'bold',
 															 align : 'center'}
 											));
-            this.touchtext.position.set(270,800);
+            this.touchtext.position.set(512,600);
             this.touchtext.anchor.set(0.5)
             this.touchtext.visible = false;
 
             this.preloadbarbg = new PIXI.Graphics();
             this.preloadbarbg.beginFill(0x333333);
-            this.preloadbarbg.drawRect(0, 0, 300, 10);
+            this.preloadbarbg.drawRect(0, 0, 300, 5);
             this.preloadbarbg.endFill();
             //this.preloadbarbg.scale.set(0,0.5);
             this.preloadbarbg.position.set(preloader_x, preloader_y);
 
             this.preloadbar = new PIXI.Graphics();
-            this.preloadbar.beginFill(0xffcc00);
-            this.preloadbar.drawRect(0, 0, 300, 10);
+            this.preloadbar.beginFill(0xff00cc);
+            this.preloadbar.drawRect(0, 0, 300, 5);
             this.preloadbar.endFill();
             this.preloadbar.scale.set(0,0.5);
             this.preloadbar.position.set(preloader_x, preloader_y);
@@ -100,27 +129,13 @@ class PixiPreload {
 															 align : 'center'}
                                                 ));
 
-            this.preloadText.position.set(posX,preloader_y+35)
+            this.preloadText.position.set(512,preloader_y+35)
             this.preloadText.anchor.set(0.5)
-
-            const logo = new PIXI.Sprite.from('assets/img/sprites/main-logo.png');
-            this.preloadScene.addChild(logo);
-            logo.position.set(270,300); 
-            logo.anchor.set(0.5); 
         
     }
 
     loadImage(image){
       return this.pixi.loader.resources[image].texture; //PIXI.Texture.from(this.pixi.loader.resources[image].url);
-    }
-
-    loadSpritesheet(atlas){
-        //console.log('load',this.pixi.loader.resources[image].texture)
-      return this.pixi.loader.resources[atlas].spritesheet; //PIXI.Texture.from(this.pixi.loader.resources[image].url);
-     
-    }
-    loadSound(sound){
-        return this.pixi.loader.resources[sound].sound;
     }
 
     onError(e){

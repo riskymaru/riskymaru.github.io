@@ -1,0 +1,55 @@
+body,html,div{
+	margin: 0px;
+	padding:0px;
+	background-color: #000000;
+	color:white;
+	width: auto;
+	height: 100%;
+
+}
+
+body{
+	width: auto;
+	height: 100%;
+	text-align: center;
+}
+
+canvas{
+	/*width: 100%;*/
+	margin: auto;
+	width: auto;
+	height: 100%;
+	
+    top: 0; right: 0; bottom: 0; left: 0;
+    border: 5px #050505;
+    text-align: center;
+	display: block
+}
+
+#myVideo{
+	margin: auto;
+    display: block
+}
+
+
+
+
+@media screen and (orientation:portrait) { 
+	canvas{
+		margin: auto;
+		height: auto;
+		width: 100%;
+	}
+ }
+@media screen and (orientation:landscape) { 
+	canvas{
+		margin: auto;
+		margin-top: 0px;
+		width: auto;
+		height: 100%;
+	}
+ }
+ 
+
+
+
